@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>方案一 S1 · 连绵瓦浪 · 沙盘工作模型</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#1b1b1c;color:#e8e3da;overscroll-behavior:none;
+ font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;overflow:hidden}
+#stage{position:absolute;inset:0}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+#bar{position:absolute;left:0;right:0;top:0;padding:14px 20px 26px;
+ padding-top:calc(14px + env(safe-area-inset-top));
+ background:linear-gradient(180deg,rgba(12,12,12,.9),rgba(12,12,12,0));pointer-events:none;z-index:5}
+#bar h1{font-size:17px;font-weight:600;letter-spacing:.4px;line-height:1.35}
+#bar p{font-size:12px;color:#9a948a;margin-top:4px;line-height:1.5}
+#bar a{color:#c8964e;text-decoration:none;pointer-events:auto}
+#ctl{position:absolute;left:0;right:0;bottom:0;z-index:5;
+ padding:14px 16px calc(16px + env(safe-area-inset-bottom));
+ display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+ background:linear-gradient(0deg,rgba(12,12,12,.86),rgba(12,12,12,0))}
+button{pointer-events:auto;background:rgba(30,30,30,.86);color:#ddd6cb;
+ border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:10px 15px;font-size:14px;
+ cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+ font-family:inherit;transition:.15s;white-space:nowrap;min-height:40px}
+button:hover{background:rgba(58,56,52,.92);color:#f2ede4}
+button.on{background:#c8964e;color:#1a1408;border-color:#c8964e}
+#infobtn{margin-left:auto}
+#tip{position:absolute;right:20px;bottom:76px;font-size:12px;color:#7d776e;text-align:right;
+ line-height:1.7;z-index:4;pointer-events:none}
+#info{position:absolute;left:16px;right:16px;bottom:76px;z-index:7;
+ background:rgba(16,16,16,.95);border:1px solid rgba(255,255,255,.13);border-radius:12px;
+ padding:18px 20px;font-size:13px;line-height:1.95;color:#c9c3b8;max-width:540px;max-height:62%;
+ overflow:auto;opacity:0;pointer-events:none;transform:translateY(10px);transition:.22s}
+#info.show{opacity:1;pointer-events:auto;transform:none}
+#info b{color:#e2b060;font-weight:600}
+#info hr{border:0;border-top:1px solid rgba(255,255,255,.1);margin:11px 0}
+#info .sm{color:#8b857b;font-size:12px}
+#load{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+ flex-direction:column;gap:14px;background:#1b1b1c;z-index:20}
+#load span{font-size:13px;color:#8b857b}
+.spin{width:26px;height:26px;border:2px solid #3a3833;border-top-color:#c8964e;border-radius:50%;
+ animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style></head><body>
+<div id="stage"></div>
+<div id="bar">
+  <h1>方案一 S1 · 连绵瓦浪</h1>
+  <p>紧凑围合的一个院 ｜ 小砚已锁定的主形 ｜ <a href="../index.html">← 返回总目录</a></p>
+</div>
+<div id="tip">拖动＝转　双指／滚轮＝缩放<br>概念阶段体量模型 · 尺寸待施工图核定</div>
+<div id="ctl">
+  <button id="b1" class="on">半鸟瞰</button>
+  <button id="b2">平视</button>
+  <button id="b3">顶视</button>
+  <button id="bc" class="on">配色模式</button>
+  <button id="br">自动转台</button>
+  <button id="infobtn">说明</button>
+</div>
+<div id="info"><b>方案一 S1 · 连绵瓦浪</b><hr>
+   一套连续深檐小青瓦屋面统摄三边，<b>紧凑围合成一个院</b>，低伏地贴着山谷走。<br>
+   北边＝酿造边（脊最高，因排烟与跨度）；东边＝工坊边；南边＝酒馆边（压最低，亲人尺度）；西侧靠山＝仓储与陈酿。<br>
+   屋面起伏<b>只由功能产生</b>，不是为效果图造波浪（§12.2）。<hr>
+   <span class="sm">看什么：① 中庭是不是被三条真实功能边直接围住 ② 屋面是不是一整套而不是几块拼接 ③ 中庭尺度紧不紧——这是 S1 唯一的弱项（"拔刀的距离"偏挤）。</span><hr>
+   <span class="sm">体量模型，仅表达格局与高差关系；柱网、跨度、排水、排烟均待专业推导。</span></div>
+<div id="load"><div class="spin"></div><span>模型生成中…</span></div>
+<script type="module">
+import * as THREE from './lib/three.module.js';
+import {OrbitControls} from './lib/OrbitControls.js';
+import {BUILD} from './build.js';
+
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.05;
+stage.appendChild(renderer.domElement);
+
+const scene=new THREE.Scene();
+scene.background=new THREE.Color(0x1b1b1c);
+scene.fog=new THREE.Fog(0x1b1b1c,120,260);
+
+const camera=new THREE.PerspectiveCamera(42, innerWidth/innerHeight, 0.5, 800);
+camera.position.set(52,42,56);
+
+const controls=new OrbitControls(camera, renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=.07;
+controls.minDistance=18; controls.maxDistance=200;
+controls.maxPolarAngle=Math.PI*0.495; controls.target.set(0,3,0);
+
+scene.add(new THREE.HemisphereLight(0xbcd0e8,0x4a3a30,1.05));
+const sun=new THREE.DirectionalLight(0xffe9cf,2.3);
+sun.position.set(46,62,34); sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+const shc=sun.shadow.camera; shc.left=-70;shc.right=70;shc.top=70;shc.bottom=-70;shc.near=1;shc.far=220;
+scene.add(sun);
+const fill=new THREE.DirectionalLight(0x8fa8c8,.5); fill.position.set(-40,40,-20); scene.add(fill);
+
+let root=null, colorMats=new Map(), whiteMode=false, spin=false;
+const whiteMat=new THREE.MeshStandardMaterial({color:0xdedbd5,roughness:.92,metalness:0,side:THREE.DoubleSide});
+
+try{
+  root=new THREE.Group();
+  const zup=BUILD['S1']();
+  zup.rotation.x=-Math.PI/2;          // Z 向上 → three 的 Y 向上
+  root.add(zup); scene.add(root);
+  root.traverse(o=>{ if(o.isMesh){ o.castShadow=true;o.receiveShadow=true;colorMats.set(o,o.material); } });
+  document.getElementById('load').style.display='none';
+}catch(e){
+  document.getElementById('load').innerHTML='<span style="color:#c96">模型生成失败：'+e.message+'<br>请用手机或电脑浏览器打开（不要在微信内打开）</span>';
+}
+
+const views={b1:[52,42,56,0,3,0],b2:[74,9,18,0,5,0],b3:[0.1,118,2,0,0,0]};
+function goto(v){
+  const [x,y,z,tx,ty,tz]=views[v];
+  const from=camera.position.clone(), to=new THREE.Vector3(x,y,z);
+  const tf=controls.target.clone(), tt=new THREE.Vector3(tx,ty,tz);
+  let t=0;
+  (function anim(){
+    t=Math.min(1,t+0.035); const e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+    camera.position.lerpVectors(from,to,e); controls.target.lerpVectors(tf,tt,e);
+    controls.update(); if(t<1) requestAnimationFrame(anim);
+  })();
+}
+['b1','b2','b3'].forEach(id=>document.getElementById(id).onclick=()=>{
+  ['b1','b2','b3'].forEach(i=>document.getElementById(i).classList.toggle('on',i===id));
+  goto(id);
+});
+document.getElementById('bc').onclick=function(){
+  whiteMode=!whiteMode; this.textContent=whiteMode?'素白模式':'配色模式';
+  this.classList.toggle('on',!whiteMode);
+  if(root) root.traverse(o=>{ if(o.isMesh) o.material=whiteMode?whiteMat:colorMats.get(o); });
+};
+document.getElementById('br').onclick=function(){ spin=!spin; this.classList.toggle('on',spin); };
+const info=document.getElementById('info');
+document.getElementById('infobtn').onclick=function(){
+  info.classList.toggle('show'); this.classList.toggle('on',info.classList.contains('show'));
+};
+addEventListener('resize',()=>{
+  camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth,innerHeight);
+});
+(function loop(){
+  requestAnimationFrame(loop);
+  if(spin&&root) root.rotation.y+=0.0022;
+  controls.update(); renderer.render(scene,camera);
+})();
+</script>
+</body></html>
