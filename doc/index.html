@@ -1,0 +1,837 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>方案一延展与突破三角 A/B · 设计推导与变更决定单 · 小有天山谷酒坊</title><style>
+:root{--ink:#1c1a19;--mut:#6b645d;--line:#e2ddd6;--bg:#faf8f5;--warm:#a8622a;--paper:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.85;
+ font-family:"Noto Serif CJK SC","Songti SC",Georgia,serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px 80px}
+.nav{padding:20px 0 0}
+.nav a{color:var(--warm);text-decoration:none;font-family:system-ui,sans-serif;font-size:.9rem}
+h1{font-size:2.1rem;margin:24px 0 8px;line-height:1.3;padding-bottom:18px;border-bottom:2px solid var(--ink)}
+h2{font-size:1.4rem;margin:44px 0 6px;padding-top:22px;border-top:1px solid var(--line)}
+h3{font-size:1.08rem;margin:26px 0 6px}
+p{margin:11px 0}
+strong{color:#12100f}
+blockquote{border-left:3px solid var(--warm);background:var(--paper);margin:18px 0;
+ padding:12px 20px;color:#4a443e}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.86rem;
+ font-family:system-ui,sans-serif;background:var(--paper)}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#f2eee9;font-weight:600}
+hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+code{background:#efece7;padding:1px 5px;border-radius:3px;font-size:.88em}
+ul,ol{padding-left:1.5em}
+li{margin:5px 0}
+figure{margin:20px 0;background:var(--paper);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+figure img{width:100%;display:block;cursor:zoom-in}
+figcaption{padding:10px 14px;font-size:.84rem;color:var(--mut);border-top:1px solid var(--line);
+ font-family:system-ui,sans-serif}
+footer{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);
+ color:var(--mut);font-size:.82rem;font-family:system-ui,sans-serif}
+#lb{display:none;position:fixed;inset:0;background:rgba(18,16,14,.93);z-index:99;
+ align-items:center;justify-content:center;cursor:zoom-out;padding:2vh 2vw}
+#lb img{max-width:96vw;max-height:92vh}
+</style></head><body><div class="wrap">
+<div class="nav"><a href="../index.html">← 返回设计工作台</a></div>
+<h1>小有天山谷酒坊 · 方案一延展 + 突破三角 A/B · 设计推导与变更决定单</h1>
+<p>编号：XY20260731 ｜ 整理：小有天 AI 设计组 ｜ 提交对象：张小砚（最终使用者）+ 投资方
+配套文件：《总体设计任务书·长期控制版 v2.1》《AI设计组工作指导书 v1.0》《外立面审核意见及下一轮任务书 v1.0》</p>
+<p><strong>本轮配图（即梦生成，定稿图集 updated-20260801 · 仅气质/概念验证，不证明结构/防水/造价/施工 · v2.1 §12.4）</strong></p>
+<figure><img alt="方案一 S1 · 紧凑围合院 · 夜鸟瞰" src="../img/S1B.jpg" /></figure>
+<p><em>图1　方案一 S1：紧凑围合的一个院，连续瓦屋面统摄三边，夜里只有中庭火塘与檐下亮着。</em></p>
+<figure><img alt="突破三角 · A案 · 三臂放射鸟瞰" src="../img/A1.jpg" /></figure>
+<p><em>图2　突破三角 A 案（合规）：一套瓦屋面顺山谷三条真实山臂裂成三条放射臂，朝中央敞口火塘院收拢；材料语言与 S1 相同（设定使然），分辨两案看鸟瞰平面几何。</em></p>
+<figure><img alt="突破三角 · B案 · 折叠混凝土鸟瞰" src="../img/B7.jpg" /></figure>
+<p><em>图3　突破三角 B 案（需变更单）：单体折叠清水混凝土酒坊嵌入红土三岔山谷，三翼环抱中央下沉火塘院。</em></p>
+<blockquote>
+<p>全套 17 张定稿图（每方案 整体/中景/细节）与逐案设计理念、合规裁定表、设计组专业意见，见成果页《小有天_三方案比选与设计说明_XY20260801.html》。</p>
+<p><strong>⚠ XY20260802 修订提示</strong>：本文件 §1–§8 写于 0731。0802 对三个三维工作模型做了一次<strong>对抗式审查</strong>（把全部坐标重算），查出本文件与已锁定值（R10 檐口恒 2.70m／R11 瓦坡 1:2.2／6.6m 控高线／G30 聚人檐净深 3.5–4m）之间的多处不一致，并发现两处<strong>模型与本文件自述不符</strong>。所有更正与仍需小砚裁定的项，<strong>集中列在文末 §9</strong>，正文未被静默修改。阅读 §1.4、§2.4、§3.1 时请对照 §9。</p>
+</blockquote>
+<hr />
+<h2>0. 本轮定位与对"矛盾"的处理（先说清楚）</h2>
+<p>本轮按你（fanny/小砚）确认的 <strong>C 路线</strong>推进：<strong>A 案（在锁定框架内合规突破三角）</strong> 与 <strong>B 案（跳出瓦屋面主形语言的几何折叠/挖洞/穿插）</strong> 并列提交，B 案附《设计变更决定单》草案，交小砚（+投资方）书面裁定。</p>
+<p><strong>已确认可以不遵循的一条</strong>：《审核意见》第 6 点"未完成清单前不再增加照片级效果图和新形态方案"——本轮为探索突破三角，经运营方口头同意暂不受此限。</p>
+<p><strong>必须由小砚书面裁定、本 AI 组不自行决定的三处冲突</strong>（对应《总体任务书 v2.1》）：
+1. <strong>§12.1 主形锁定</strong>：连续深檐瓦屋面为唯一主形。→ B 案用混凝土几何体替代瓦屋面，属改写锁定项，见第 4 节变更决定单。
+2. <strong>§18 禁止方向</strong>：禁"无依据曲面/第二套主系统"。→ A 案不触碰；B 案的折面与挖洞均给出功能依据以回应"无依据"之禁，但"是否构成第二套主系统"仍需小砚认定。
+3. <strong>§4.3 / §18 / 白酒不进山洞</strong>：不大规模挖山、白酒主发酵不进山体。→ 两案的"挖洞"均限定为<strong>在建筑体量内挖院/天井/穿廊</strong>；仅 20 号陈酿可局部嵌北崖，须地勘/结构/消防专项复核（你已明确"符合真实承重/安全/物理"）。</p>
+<p><strong>两点不是矛盾，先澄清</strong>：①打破三角<strong>形状</strong>是文件所允许甚至要求的（§7 定义"三角发酵院≠三角形轮廓"，§7.4"三角形只存在于屋顶或文字中=失效"）；②你要的"功能是折叠/挖洞/穿插的理由"与文件方法论一致（§12.2 起伏只能由功能/地形/采光产生）。两案都据此设计。</p>
+<hr />
+<h2>1. 方案一（S1 连绵瓦浪）延展 —— 逐条设计推导</h2>
+<blockquote>
+<p>说明：以下按《审核意见》§5.1 与《总体任务书》§3.3 的<strong>强制推导格式</strong>回答《审核意见》§5.2「必须推导的关键问题」，同时覆盖《工作指导书》第八点成果要求。每条含：①输入依据 ②设计目标 ③≥2 可比较方案 ④选择理由与放弃理由 ⑤风险/假设/需专业复核。所有未经测绘/设备/专业确认的数值均标「假设/待复核」。</p>
+<p><strong>命名约定（回应你上一稿的疑问）</strong>：每一条推导里的 <strong>(做法①)(做法②)</strong> 只是<strong>该条问题内部</strong>为满足"≥2 比较方案"而并列的两种小做法，<strong>做完这条就作废、下一条重新编号</strong>，与方案级无关。<strong>方案级的名字只有三个</strong>：<code>方案一 S1</code>（瓦屋面主形，小砚已锁）、<code>突破三角 A案</code>（瓦屋面框架内破三角，合规）、<code>突破三角 B案</code>（几何折叠/挖洞/穿插，需变更单）。旧稿里出现的"甲/乙"就是这里的"做法①/做法②"，容易和方案级混淆，本稿已统一改名。</p>
+</blockquote>
+<h3>1.1 三角发酵院是否成立（对应 §7 成立性）</h3>
+<ul>
+<li><strong>输入依据</strong>：三边=酿造边(2/5/6/8/3)、工坊边(13-17/1D)、酒馆边(18/10/3)；中庭为交汇场（§7.1）。航拍显示山谷为天然三岔，中央有真实交汇场。</li>
+<li><strong>设计目标</strong>：三条真实功能边<strong>直接面对</strong>同一中庭，非背墙/长通道/仓库背面（§7.2 第24条）。</li>
+<li><strong>比较方案</strong>：(做法①) 正三角紧凑院——中庭净空仅半径约2.0–2.4m（局部0.97m，历史数据）；(做法②) S1 连续瓦屋面统摄下的<strong>微展开三角</strong>——三边沿山谷三臂略微外拉，中庭净空放大到可站人（假设半径≥4m，待平面量取）。</li>
+<li><strong>选择/放弃</strong>：选(做法②)。(做法①)中庭过挤，出酒日20–30人无法容纳、热酒糟穿庭与生产交汇冲突；(做法②)在不破坏三边直接对中庭的前提下解决聚人，符合§7.3"中庭是交汇场不是装饰庭院"。</li>
+<li><strong>风险/待复核</strong>：中庭最终净空须由《三人运营看顾图》+平面量取确认（建筑）；三边直接界面是否有背墙/宽通道须出《朝中庭立面展开图》（建筑）。</li>
+</ul>
+<h3>1.2 三人日常运营是否成立（对应 §6.4 / §11.4）</h3>
+<ul>
+<li><strong>输入依据</strong>：A生产位(火灶/湿区/摊晾/白酒发酵/果酒设备)、B工坊位(灌装后端/贴标/包装/成品/账目)、C酒馆/接待位(小酒馆/厨房/中庭/公卫)（§6.4）。</li>
+<li><strong>设计目标</strong>：三人可互看、互喊、快速支援；重物路径短（§0 总原则7、G25）。</li>
+<li><strong>比较方案</strong>：(做法①) 三位分处三翼端头——看顾距离长；(做法②) 三位站位<strong>贴中庭三角顶点</strong>，视线交汇于中庭——最远直线距离最短。</li>
+<li><strong>选择/放弃</strong>：选(做法②)，符合§7.2 第29条"酒馆座位同时感知中庭和生产；工坊人员抬头看见中庭"。</li>
+<li><strong>风险/待复核</strong>：三人站位、视线、最远喊话距离、遮挡须出《3人日常运营看顾图》（§11.4，缺此图视为未完成运营校核）。</li>
+</ul>
+<h3>1.3 功能基底可靠性（对应 §8 编号 / §9 面积 / 附录B 动线）</h3>
+<ul>
+<li><strong>1号综合仓储</strong>是否完整：须含 1A粮仓/1B白酒中转/1C空瓶包材/1D洁净灌装/1E隐蔽杂物，有外部货运口+内部取用口，不拆成无统筹碎片（§8）。<strong>S1 处理</strong>：靠山侧毛石厚墙体量承载1号，外墙开外部货运口，内墙短接生产。</li>
+<li><strong>2号白酒发酵</strong>放得下：按"一锅米对应一发酵单元"，A情景100斤(约30–50单元)/B情景150斤(约20–34单元)两案并跑，缸/桶阵列不混，不叠批（§6.2、§9.5）。<strong>S1 处理</strong>：2号留主酒坊、紧贴三角院酿造边，不进山洞（§0 总原则9、§18）。</li>
+<li><strong>8号果酒完整线</strong>闭合：9冷库→5湿区→4B→8B发酵→8A压榨→8C过滤→8D洗瓶/装瓶/压盖/瓶浴灭菌→冷却/擦瓶/晾干→13/16（§10.3）。未封口果酒不穿中庭进开放工坊。</li>
+<li><strong>风险/待复核</strong>：功能面积须按§9.2 八类口径出《功能面积台账》+《设备占位表》，含设备来源/尺寸（设备供应商）；不以950–1100㎡为填满目标（§9.1）。</li>
+</ul>
+<h3>1.4 屋顶主形（S1 的核心，对应 §12.2）</h3>
+<ul>
+<li><strong>输入依据</strong>：从崖顶看是一个完整酒坊、从谷口看低伏连贯从山谷生长（§12.2 整体轮廓）。</li>
+<li><strong>设计目标</strong>：一套连续深檐瓦屋面统摄三边；屋面起伏<strong>只由</strong>火灶排烟、跨度、地形、采光、净高、排水产生（§12.2 屋面起伏），禁无依据"瓦浪"。</li>
+<li><strong>比较方案</strong>：(做法①) 均匀连续单坡；(做法②) <strong>功能分段深檐</strong>——酿造边脊高(排烟/跨度需要)、工坊边中、酒馆边压低亲人，每段高差有真实理由。<strong>（0802 修订：脊高不再取假设值，改由「檐口恒 2.70m ＋ 瓦坡 1:2.2 ＋各边跨度」反推为 6.15／5.70／5.34m，全部在 6.6m 控高线下——见 §9.2）</strong></li>
+<li><strong>选择/放弃</strong>：选(做法②)。回应§12.2"酒馆边尺度亲人可开敞""火灶节点可适当抬高但由天锅/烟道/围观距离推导"；避免为效果图造波浪（§18）。</li>
+<li><strong>风险/待复核</strong>：脊高须由《关键剖面》+设备推导（建筑+结构+设备）复核；<strong>檐口 2.70m 与瓦坡 1:2.2 已是 R10/R11 锁定值，不是待定项</strong>（0802 更正：本文件原写"不先锁定"有误，见 §9.2）；聚人檐净深≥3.5–4m 为历史共识G30，工作模型现取朝中庭挑 3.0m／净深 3.55m，仍须剖面校核。</li>
+</ul>
+<h3>1.5 火灶与排烟（对应 §12.2 火灶节点 / §16.2 暖通）</h3>
+<ul>
+<li><strong>输入依据</strong>：3号体验火灶蒸馏出酒/围灶/约30人活动；地面易冲洗，近厨房和公卫/呕吐区（§8 编号3）。生产柴火灶（6号）是否保留待定（§17）。</li>
+<li><strong>设计目标</strong>：火灶节点可抬高，但高度由天锅、烟道、补风、排热、消防边界、围观距离决定（§12.2）。</li>
+<li><strong>比较方案</strong>：(做法①) 火灶脊单独高耸成造型标志；(做法②) 火灶抬高<strong>只到排烟/补风所需</strong>，不做造型化尖顶。</li>
+<li><strong>选择/放弃</strong>：选(做法②)，避免§18"把火灶做成造型标志"之嫌；符合§12.5"夜态只亮酒馆与火灶，不做亮化"。</li>
+<li><strong>风险/待复核</strong>：火灶剖面+排烟路径+安全边界须暖通/消防专项（§16.2）；明火+蒸馏酒精蒸汽是消防重点，越早接入越省（分段路线图卡点）。</li>
+</ul>
+<h3>1.6 靠山毛石界面（对应 §12.3 材料 / §16.2 地勘）</h3>
+<ul>
+<li><strong>输入依据</strong>：毛石用于靠山、陈酿、仓储、墙裙或必要挡护；幕阜山复式花岗岩，糙砌乱砌不细凿（§12.3、共识G29）。落石带需防护退让（场地实况：悬空高1.1–9m 数十处）。</li>
+<li><strong>设计目标</strong>：毛石回答承重/挡土/围护还是饰面之分工，及防潮/排水/落石防护（§12.3 必须回答）。</li>
+<li><strong>比较方案</strong>：(做法①) 毛石仅做饰面贴皮；(做法②) 毛石做<strong>承重挡土厚墙</strong>承载1号仓储/20号陈酿稳定界面。</li>
+<li><strong>选择/放弃</strong>：选(做法②)，符合"石为芯"，兼顾恒温与靠山稳定；但不把日常高频生产推入山体深处（§12.2 靠山边）。</li>
+<li><strong>风险/待复核</strong>：地基、挡土、落石、崖壁风化须地勘/边坡/结构专项（§16.2），本组不代签。</li>
+</ul>
+<h3>1.7 深檐与气候（对应 §4.4 / §16.1）</h3>
+<ul>
+<li><strong>输入依据</strong>：冬至谷底直射0–3h（南部0–1h）、夏至7–9.8h暴晒；年降水1283mm、积雪按10cm、冻融（共识G27/G28）。</li>
+<li><strong>设计目标</strong>：夏要遮（深檐）、冬要火（火灶+外摆落在冬至≥3h斑块）；不同方位不同功能对应不同檐深。</li>
+<li><strong>比较方案</strong>：(做法①) 全场统一檐深；(做法②) <strong>分段檐深表</strong>——聚人檐深、通行段浅、发酵间按通风采光定。</li>
+<li><strong>选择/放弃</strong>：选(做法②)（§12.2 深檐由功能决定）。</li>
+<li><strong>风险/待复核</strong>：檐深须叠加真实坐标、地形、树木遮挡与日照/雨飘/风环境复核，不直接套固定值（§4.4）；须出《冬至/夏至日照斑块图》（分段路线图第二段）。</li>
+</ul>
+<h3>1.8 中庭遮阳（对应 §7.3 / §18）</h3>
+<ul>
+<li><strong>输入依据</strong>：中庭保持通透，不设永久大型中心伞/雕塑/水景/密集绿化（§7.3、§12.2、§18）。</li>
+<li><strong>比较方案</strong>：(做法①) 永久大伞——<strong>违禁</strong>；(做法②) 无遮阳 + 局部可拆卸季节性轻棚。</li>
+<li><strong>选择/放弃</strong>：选(做法②)（§7.3"可拆卸/可收纳/局部季节性遮阳"允许）。</li>
+<li><strong>风险/待复核</strong>：竹构轻棚须雪载(10cm)/冰挂/防腐/防火验算，永不靠近火灶（G29）。</li>
+</ul>
+<h3>1.9 结构与跨度（对应 §17 待决 / §19.4）</h3>
+<ul>
+<li><strong>输入依据</strong>：主结构木、钢木混合还是钢，是§17 待决事项（方案深化前，责任方=建筑+结构+造价）。</li>
+<li><strong>比较方案</strong>：(做法①) 纯木构——跨度受限、防火/维护负担；(做法②) 钢木混合——跨度与耐久占优，亲人界面仍露木。</li>
+<li><strong>选择/放弃</strong>：倾向(做法②)作比较基准，但<strong>不自行宣布可建</strong>（§17、§0 总原则13）。</li>
+<li><strong>风险/待复核</strong>：柱网/跨度/屋面荷载/抗震/施工吊装须结构专项（§16.2）。</li>
+</ul>
+<h3>1.10 维护与造价倾向（对应 §16.3 / §19.4）</h3>
+<ul>
+<li><strong>输入依据</strong>：材料要"降一层新和净"、会变老得好看、在地可获得可维修（G31、§16.1 在地材料）。</li>
+<li><strong>交付要求</strong>：瓦/木/毛石/竹/高侧窗各自施工与维护负担的<strong>相对造价/工期/维护等级表</strong>，不要求虚假精确报价（§12.3、§19.4）。须出"最容易坏的10个节点"+预防措施（§16.3）。</li>
+</ul>
+<blockquote>
+<p><strong>S1 结论</strong>：作为<strong>主方向合规成立</strong>，本轮延展补齐了逐条推导；进入定稿前仍欠《功能面积台账》《3人看顾图》《三条动线图》《关键剖面》《日照斑块图》《结构概念》——即《总体任务书》§19 阶段1–2 成果。</p>
+</blockquote>
+<hr />
+<h2>2. 突破三角 · A 案（合规）—— 设计推导 + 逐条对照 v2.1</h2>
+<p><strong>一句话</strong>：保留"连续深檐瓦屋面 + 毛石"为主形材料，把<strong>规整正三角</strong>打散成<strong>顺山谷三条真实臂放射的"三功能边围合一个中庭"</strong>构型；破的是"三角形状"，守的是"三真实功能边直对同一中庭"（§7 允许甚至要求：三角发酵院≠三角形轮廓）。折叠/挖洞/穿插只发生在<strong>瓦屋面体量与院墙</strong>上，每处都有功能理由。<strong>不改写任何锁定项，不需要变更决定单，可直接推进。</strong></p>
+<p><strong>与 S1 的区别（一句话）</strong>：S1 是"微展开三角"（三边略外拉、几何仍近三角）；A 案更进一步，把三边索性拆成<strong>顺谷三臂的放射折线</strong>，中庭从"三角内切"变成"三臂交汇的敞口场"。二者同属瓦屋面语言，A 案是 S1 在平面几何上的"突破版"。</p>
+<blockquote>
+<p>以下按《总体任务书》§3.3 强制格式逐条推导。凡与 §1 S1 结论一致处注明"同 §1.x"，仅展开 A 案<strong>因破三角而变化</strong>的部分。</p>
+</blockquote>
+<h3>2.1 破三角后"三功能边围合一个中庭"是否仍成立（§7 成立性）</h3>
+<ul>
+<li><strong>输入依据</strong>：航拍显示山谷本身为<strong>天然三岔放射</strong>，中央有真实红土交汇场，三臂向外辐射（这是 A 案的第一手场地依据，不是凭空造型）。三边=酿造边/工坊边/酒馆边同 §1.1。</li>
+<li><strong>设计目标</strong>：抛弃正三角"闭合内切"的紧，改为三臂顺真实地形张开，但三条功能边仍<strong>直接面对</strong>同一中央交汇场（§7.2 第24条），不得退化成"一条长街"或"背对中庭"。</li>
+<li><strong>比较方案</strong>：(做法①) 正三角原型——中庭闭合但过挤（同 §1.1 痛点）；(做法②) <strong>三臂顺谷放射</strong>——三边沿山谷三条真实臂展开，中庭是三臂交汇的敞口场，净空显著放大（假设三臂夹角约 100–130°，中庭可容 20–30 人，待平面量取）。</li>
+<li><strong>选择/放弃</strong>：选(做法②)。它同时接住小砚那张"放射草顶参考"、又守住"三边直对中庭"；(做法①)是被否的现状痛点。<strong>注意</strong>：放射一旦拉太长即违"重物短线/G25"，故三臂长度受动线约束、非越长越好。</li>
+<li><strong>风险/待复核</strong>：三臂夹角、臂长、中庭净空须《（几何）院成立性图》+平面量取（建筑）；是否越 §18"禁止放射作整体主形"——见 2.11 专项裁定条。</li>
+</ul>
+<h3>2.2 三人日常运营是否成立（§6.4 / §11.4）</h3>
+<ul>
+<li><strong>输入依据</strong>：三生产/工坊/酒馆位同 §1.2。</li>
+<li><strong>设计目标</strong>：破三角后三人视线仍须交汇于中庭、互看互喊、重物短线。</li>
+<li><strong>比较方案</strong>：(做法①) 三人分处三臂<strong>远端</strong>——放射越长看顾越弱（放射构型的天然风险）；(做法②) 三人站位<strong>贴三臂根部/中庭交汇口</strong>，视线在敞口中庭交汇。</li>
+<li><strong>选择/放弃</strong>：选(做法②)。这也反过来限制了臂长——臂太长则三人退到根部后，臂端生产脱离看顾，故 A 案的臂是"短而张"不是"长而散"。</li>
+<li><strong>风险/待复核</strong>：须出《3人看顾图》验证放射构型下最远喊话距离仍达标（§11.4）；若不达标则 A 案退回 S1 微展开三角。</li>
+</ul>
+<h3>2.3 功能基底可靠性（§8 / §9 / 附录B）</h3>
+<ul>
+<li>同 §1.3：1号靠山厚墙仍成立（放射的一臂贴北崖）；2号白酒留主酒坊不进山洞；8号果酒闭合线不穿中庭。<strong>A 案特有影响</strong>：放射三臂使各功能带更长、更线性，利于"连续工作带"排布（§8 第13–17条），但须防止某一臂过长导致该臂末端功能脱离中庭视线（见 2.2）。</li>
+<li><strong>风险/待复核</strong>：功能面积/设备占位台账同 §1.3，须按 §9.2 八类口径出。</li>
+</ul>
+<h3>2.4 屋顶主形：放射三臂下的连续瓦屋面（§12.1 / §12.2）</h3>
+<ul>
+<li><strong>输入依据</strong>：§12.1 连续深檐瓦屋面为唯一主形（A 案<strong>必须守</strong>，这是 A 案区别于 B 案的根本）。</li>
+<li><strong>设计目标</strong>：一套瓦屋面<strong>沿三条放射臂连续统摄</strong>、在中庭交汇口自然收口，起伏只由功能/地形/排烟/跨度产生。</li>
+<li><strong>比较方案</strong>：(做法①) 三臂各自独立三坡、在中庭生硬拼接——易出现三套屋面的"缝"，观感碎、排水乱；(做法②) <strong>三臂共一套连续折面瓦屋面</strong>，交汇处以低垂连续脊收拢，形成"三片瓦浪汇于一心"。</li>
+<li><strong>选择/放弃</strong>：选(做法②)，守 §12.1"一套连续屋面统摄"；折面对应酿造边高（排烟/跨度）、酒馆边低（亲人/谷口）——即 §12.2 功能起伏，非"无依据瓦浪"（§18）。</li>
+<li><strong>0802 修订</strong>：工作模型第一版在中庭上方做了一个 R=9.4m、覆盖约 230㎡ 的六边形"收口罩"，<strong>几何上等同 §7.3 明令禁止的"永久大型中心伞"</strong>，且其外缘刺穿了酒馆边屋面。已删除。现模型的三边转角是<strong>大开口、屋面不相接</strong>——"一套连续屋面"在转角处<strong>尚未实现</strong>，这是本案最难节点，列为 §9.3 待裁定项，不得当作已解决。</li>
+<li><strong>风险/待复核</strong>：三臂交汇处的屋面收口、排水、谷线防漏是本案<strong>最难节点</strong>，须建筑+结构+防水专项；不得为造型在交汇处起尖。</li>
+</ul>
+<h3>2.5 火灶与排烟（§12.2 / §16.2）</h3>
+<ul>
+<li>同 §1.5：火灶（3号）抬高只到排烟/补风所需，不做造型尖顶。<strong>A 案特有</strong>：火塘落在中庭交汇口（三臂视线焦点），围观动线自然成立，但明火位于三臂交汇的"风口"——须核补风与排烟是否受放射穿堂风干扰。</li>
+<li><strong>风险/待复核</strong>：火灶剖面+排烟+交汇口风环境须暖通/消防专项（§16.2）。</li>
+</ul>
+<h3>2.6 靠山毛石界面（§12.3 / §16.2）</h3>
+<ul>
+<li>同 §1.6：毛石做承重挡土厚墙，承载 1号仓储/20号陈酿。<strong>A 案特有</strong>：放射三臂中"贴北崖的一臂"直接坐在毛石挡土界面上，落石退让（悬空1.1–9m 数十处）对这一臂的臂长与开窗形成硬约束。</li>
+<li><strong>风险/待复核</strong>：嵌崖臂的地基/挡土/落石须地勘/边坡/结构专项，本组不代签。</li>
+</ul>
+<h3>2.7 深檐与气候（§4.4 / §16.1）</h3>
+<ul>
+<li>同 §1.7：分段檐深表。<strong>A 案特有</strong>：三臂朝向不同（放射），各臂日照/雨飘/风向不同，檐深必须<strong>逐臂差异化</strong>——朝南臂遮夏晒、朝北臂重保温、谷口臂聚人加深。这是放射构型相较正三角<strong>更复杂</strong>处，也是它的机会（各臂气候响应更精准）。</li>
+<li><strong>风险/待复核</strong>：须叠真实坐标出《冬至/夏至日照斑块图》，逐臂定檐深（§4.4）。</li>
+</ul>
+<h3>2.8 中庭遮阳（§7.3 / §18）</h3>
+<ul>
+<li>同 §1.8：无永久大伞，仅局部可拆卸季节性轻棚。<strong>A 案特有</strong>：敞口放射中庭比闭合三角中庭<strong>更开敞、夏季更晒</strong>，季节性轻棚需求更明确，但仍须避开火塘、须过雪载/防火验算（G29）。</li>
+</ul>
+<h3>2.9 结构与跨度（§17 / §19.4）</h3>
+<ul>
+<li>同 §1.9：倾向钢木混合作比较基准。<strong>A 案特有</strong>：三臂交汇处若做大跨无柱以保中庭通透，结构挑战高于线性三角边；须结构专项判断交汇节点可行性。</li>
+<li><strong>风险/待复核</strong>：柱网/跨度/交汇节点/抗震/吊装须结构专项。</li>
+</ul>
+<h3>2.10 维护与造价倾向（§16.3 / §19.4）</h3>
+<ul>
+<li>同 §1.10：瓦/木/毛石/竹相对造价/工期/维护表 + "最容易坏的10个节点"。<strong>A 案特有新增易损点</strong>：三臂交汇屋面谷线（漏水高风险）、放射檐口逐臂不等（施工放样复杂）、敞口中庭排水。</li>
+</ul>
+<h3>2.11 【专项裁定条】放射瓦屋面算不算越 §18"禁止放射"线</h3>
+<ul>
+<li><strong>冲突点</strong>：§18 禁"放射伞群/放射玻璃/无依据曲面作整体主形"。A 案放射的是<strong>三条瓦屋面臂</strong>，不是伞、不是玻璃、不是曲面。</li>
+<li><strong>AI 组判断（供参考，不替小砚决定）</strong>：§18 禁的是"网红放射符号"，A 案放射有<strong>山谷三岔地形</strong>这一硬依据，且材料仍是瓦+毛石、无曲面。倾向认为<strong>未越线</strong>。</li>
+<li><strong>交小砚裁定</strong>：( ) 视瓦屋面三臂放射为未越 §18，A 案可推进　( ) 视为越线，A 案回退到 S1"微展开三角"（仍破了一点三角，但不放射）。</li>
+</ul>
+<p><strong>逐条对照 v2.1</strong>（✓守住 / ⚠需注意 / 需裁定）：</p>
+<table>
+<thead>
+<tr>
+<th>锁定/禁止项</th>
+<th>A案</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§12.1 瓦屋面为唯一主形</td>
+<td>✓ 保留一套连续瓦屋面+毛石</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§7 三边围合一个中庭</td>
+<td>✓ 三真实功能边直对敞口中庭</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§7.4 三角只在屋顶/文字=失效</td>
+<td>✓ 破的是真实平面几何，非仅屋顶画三角</td>
+<td>守住(正解)</td>
+</tr>
+<tr>
+<td>§7.3 中庭通透</td>
+<td>✓ 无永久大伞/构筑</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§12.2 屋面起伏有依据</td>
+<td>✓ 折面由排烟/跨度/地形/朝向</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§4.3 不大挖山</td>
+<td>✓ 只在体量内挖院/天井</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§0 总原则9 白酒不进山洞</td>
+<td>✓ 2号留主酒坊</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§18 禁止放射作整体主形</td>
+<td>⚠ 放射的是瓦屋面臂非伞/曲面，有地形依据</td>
+<td><strong>见 2.11 交小砚裁定</strong></td>
+</tr>
+<tr>
+<td>§25 重物短线</td>
+<td>⚠ 放射臂不可过长</td>
+<td>由动线图约束臂长</td>
+</tr>
+<tr>
+<td>20号陈酿嵌北崖</td>
+<td>⚠ 放射的贴崖臂局部嵌崖</td>
+<td>地勘/结构专项</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A 案不需要《设计变更决定单》</strong>（未改写任何锁定项）；唯一需要小砚一句话裁定的是 2.11"放射是否越 §18 线"。若判越线，A 案自动回退 S1 微展开三角，仍无需变更单。</p>
+<hr />
+<h2>3. 突破三角 · B 案（几何折叠/挖洞/穿插）—— 设计推导 + 逐条对照 v2.1</h2>
+<p><strong>一句话</strong>：采用<strong>单一清水混凝土体量</strong>，以"一栋一个几何操作"的方式，用折叠面、挖出的院洞/天井、体量穿插作为空间语言。<strong>功能就是折叠/挖洞/穿插的唯一理由</strong>——这一点与文件 §12.2 方法论一致；但它<strong>用混凝土几何体替代了瓦屋面主形</strong>，属改写 §12.1 锁定项，<strong>必须先签《设计变更决定单》（第4节）才可推进</strong>。</p>
+<p><strong>设计参照（小砚上传的 Saul Kim 图片语汇）</strong>：Saul Kim（Seoul，Saul Kim Studio；Kaywon University of Art and Design 客座教授）的白模研究方法是——<strong>每一栋只做一个清晰的几何"异常操作"</strong>（收缩包裹 Shrink-Wrap、撕裂包装 Torn Wrapper、屋顶架桥 Bridging Roofs、楼梯压缩 Staircase Compression、体量分裂 Box Mitosis、抹灰剥落 Plaster Peeling、双圆角 Double Fillet、投影圆 Projected Circle、未完成压平 Unfinished Flattening），用素白体块+人形比例呈现，不靠材质靠体量。<strong>B 案借的正是这套"功能=单一几何操作"的克制</strong>，而不是照抄某一个形。文字确实无法完全转述这套语言，故 B 案的图片提示词（第8节）专门要求"白模研究模型气质"。</p>
+<blockquote>
+<p>以下按《总体任务书》§3.3 强制格式逐条推导。B 案与 S1/A 案在<strong>功能层</strong>（§7 三边围合、§6.4 三人运营、§8 编号、§10 动线）保持一致，差异集中在<strong>主形语言、材料、结构</strong>，逐条展开如下。</p>
+</blockquote>
+<h3>3.1 三功能边围合一个中庭是否成立（§7 成立性）</h3>
+<ul>
+<li><strong>输入依据</strong>：三岔放射地形同 A 案；三边=酿造/工坊/酒馆。</li>
+<li><strong>设计目标</strong>：三翼混凝土体量<strong>抱住中央一个下沉/平院</strong>（火塘交汇场），三真实功能边直对该院。</li>
+<li><strong>比较方案</strong>：(做法①) 三个独立混凝土块 + 巷道串联——<strong>撞 §7 明令"禁止拆成多个独立石体块+巷道"</strong>，否；(做法②) <strong>单一连续混凝土体量</strong>，中央"挖"出院（Box Mitosis 的克制版：一个体量内部裂出中庭，而非裂成多栋）。</li>
+<li><strong>选择/放弃</strong>：选(做法②)。它是"一个体量抱一个院"，守住 §7"三边围合一个中庭"，同时是 Saul Kim"单一操作"的正解。</li>
+<li><strong>风险/待复核</strong>：中庭净空、三边直对界面须《几何院成立性图》（建筑）。</li>
+<li><strong>0802 修订</strong>：工作模型第一版<strong>实际建成了被本条否掉的做法①</strong>——三个互不相连的混凝土块，净距 4.5–6.0m。这是写了一套、做了另一套。已加三处转角连接体连成一栋。<strong>注意：B 案《设计变更决定单》的覆盖范围只有 §12.1 与 §12.3，§7 不在其中</strong>——即使签了变更单，也不豁免"禁止拆成多个独立体块"。</li>
+</ul>
+<h3>3.2 三人日常运营（§6.4 / §11.4）</h3>
+<ul>
+<li>同 A 案 2.2：三人贴中庭、视线交汇。<strong>B 案特有强项</strong>：端墙可"挖观看洞口"（Projected Circle / Torn Wrapper 语汇），让三人隔墙也能看见彼此工作面——比瓦屋面案更容易做到"看得见叫得应"（§11）。</li>
+<li><strong>风险/待复核</strong>：洞口位置/大小须《3人看顾图》+洁污分区校核（观看洞口不得破坏食品洁净区，§16）。</li>
+</ul>
+<h3>3.3 功能基底可靠性（§8 / §9 / 附录B）</h3>
+<ul>
+<li>同 §1.3 功能内容不变：1号靠山、2号白酒留体量内不进山洞、8号果酒闭合线。<strong>B 案特有</strong>：混凝土厚墙天然利于 1号仓储/20号陈酿的恒温挡土；但"挖洞/穿插"不得切断附录B 的重物短线与洁污流向。</li>
+<li><strong>风险/待复核</strong>：面积/设备台账同 §1.3。</li>
+</ul>
+<h3>3.4 主形：单一混凝土几何体（改写 §12.1 —— B 案的核心冲突）</h3>
+<ul>
+<li><strong>输入依据</strong>：§12.1 原锁"连续深檐瓦屋面为唯一主形"。B 案<strong>主动改写此条</strong>，故需变更单。</li>
+<li><strong>设计目标</strong>：以"一个几何操作"统摄全局，形不散、可读为一栋（Saul Kim 原则）。</li>
+<li><strong>比较方案</strong>：(做法①) 多操作叠加（又折又扭又剥）——热闹但撞 §18"无依据造型"，否；(做法②) <strong>单一主操作</strong>——"三翼折叠面 + 中央挖院"为唯一母题，其余（洞口、穿插）都是这一母题的从属动作。</li>
+<li><strong>选择/放弃</strong>：选(做法②)。折面对应三翼不同跨度/排烟/采光（酿造翼高、酒馆翼低），折是净高与排烟的结果、不是造型（守 §12.2 方法论）。</li>
+<li><strong>风险/待复核</strong>：<strong>这是与小砚锁定项的正面冲突</strong>，须第4节变更单签署；混凝土折面屋顶的防水/排水/冻融是必答项。</li>
+</ul>
+<h3>3.5 火灶与排烟（§12.2 / §16.2）</h3>
+<ul>
+<li>同 §1.5/2.5：火塘落中央挖出的下沉院，围观动线天然。<strong>B 案特有</strong>：混凝土下沉院对明火+蒸馏酒精蒸汽的排烟/补风需要开"天井拔风口"（Projected Circle 语汇兼采光）；明火与混凝土接触面须耐火构造。</li>
+<li><strong>风险/待复核</strong>：暖通/消防专项（§16.2），下沉院聚烟风险须重点核。</li>
+</ul>
+<h3>3.6 靠山界面：混凝土 + 毛石（§12.3 / §16.2）</h3>
+<ul>
+<li><strong>输入依据</strong>：§12.3 列明材料=瓦/木/毛石/竹，<strong>混凝土不在其中</strong>。</li>
+<li><strong>设计目标</strong>：主体清水混凝土（耐久/防火/挡土/靠山稳定），靠山与墙裙仍用毛石以接"石为芯"。</li>
+<li><strong>比较方案</strong>：(做法①) 全清水混凝土——最纯粹但离 §12.3 材料语境最远；(做法②) <strong>混凝土主体 + 毛石靠山墙裙 + 木/钢木亲人檐廊</strong>——混凝土是"石为芯"的当代表达，毛石与木维持在地质感。</li>
+<li><strong>选择/放弃</strong>：倾向(做法②)。但"混凝土算不算 §12.3 精神内的材料"<strong>只有小砚能认定</strong>（变更单第2项）。</li>
+<li><strong>风险/待复核</strong>：清水混凝土冻融(−5.2~40.2℃)抗冻等级、防裂、渗漏、维护须结构/防水专项。</li>
+</ul>
+<h3>3.7 深檐与气候（§4.4 / §16.1）</h3>
+<ul>
+<li><strong>B 案难点</strong>：混凝土几何体天然"少檐"，而场地夏至暴晒7–9.8h、年降水1283mm——<strong>必须回答遮阳与排水</strong>，否则撞气候硬约束。</li>
+<li><strong>比较方案</strong>：(做法①) 纯利落体块无檐——夏晒/雨飘不过关；(做法②) 折面出挑做"混凝土深挑檐"或局部木檐廊补足亲人界面遮阳。</li>
+<li><strong>选择/放弃</strong>：选(做法②)，用折面出挑兼顾遮阳，亲人界面仍露木。</li>
+<li><strong>风险/待复核</strong>：出挑檐的结构悬挑、日照斑块须专项（§4.4）。</li>
+</ul>
+<h3>3.8 中庭遮阳（§7.3 / §18）</h3>
+<ul>
+<li>同 §1.8/2.8：中庭为下沉/平院，无永久大伞。<strong>B 案特有</strong>：下沉院自带围合遮蔽，夏季比敞口放射院更凉，但排水/防涝是重点（下沉院易积水）。</li>
+</ul>
+<h3>3.9 结构与跨度：挖洞/穿插的承重现实（§17 / §19.4）—— 回应你"符合真实承重/安全/物理"</h3>
+<ul>
+<li><strong>输入依据</strong>：你明确要求挖洞/穿插必须"符合真实世界物理、承重、安全"。</li>
+<li><strong>设计目标</strong>：挖出的洞口、穿插条与主体的交接，必须结构成立、不是画上去的。</li>
+<li><strong>必答的物理项</strong>：① 挖洞体量<strong>洞口上方须梁/拱转换承重</strong>，不能凭空开大洞；② 穿插的木/玻璃生产条与混凝土主体交接须<strong>变形缝 + 防水</strong>（两种材料温胀不同）；③ 下沉院挡土墙须抗侧压 + 防水;④ 大跨中庭若无柱须专门结构体系。</li>
+<li><strong>选择/放弃</strong>：B 案在概念上成立的前提是<strong>这些转换全部由结构专项落实</strong>；本 AI 组只提出接口与问题，<strong>不代签"可建"</strong>（§17、§0 总原则13）。</li>
+<li><strong>风险/待复核</strong>：结构（洞口转换/穿插节点/抗震/抗冻）、给排水（下沉院防涝/防水）为 B 案能否成立的<strong>决定性专项</strong>。</li>
+</ul>
+<h3>3.10 维护与造价（§16.3 / §19.4）</h3>
+<ul>
+<li>清水混凝土一次成型对<strong>模板与工艺要求高</strong>，当地施工能力与后期维护（冻融裂缝、渗漏、返修难）须造价+施工专项评估；相对瓦木造价/工期/维护等级须出表。<strong>B 案"最容易坏的10个节点"</strong>预估：折面谷线、挖洞洞口上沿、穿插材料交接缝、下沉院排水、清水面冻融起皮——均高于瓦木案。</li>
+</ul>
+<h3>3.11 B 案的诚实定位</h3>
+<p>B 案是<strong>为回应"突破三角=突破设计"而做的最激进探索</strong>，形式张力最大、"看得见叫得应"最强，但它<strong>改写小砚已锁的主形</strong>、用了清单外材料、造价与施工风险最高。<strong>它成立的唯一前提是小砚（+投资方）签署第4节变更单</strong>；不签则不推进，回落 A 案。</p>
+<p><strong>逐条对照 v2.1</strong>（✓守住 / ⚠偏离需裁定 / ✗直接改写）：</p>
+<table>
+<thead>
+<tr>
+<th>锁定/禁止项</th>
+<th>B案</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§7 三边围合一个中庭</td>
+<td>✓ 三翼真实功能边抱中央下沉院</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§7 禁拆多独立块+巷道</td>
+<td>✓ 单一体量内部裂院，非多栋</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§7.3 中庭通透</td>
+<td>✓ 下沉/平院无永久大伞</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§11 看得见叫得应</td>
+<td>✓ 端墙观看洞口+穿插条</td>
+<td>守住(最强)</td>
+</tr>
+<tr>
+<td>§0 总原则9 白酒不进山洞</td>
+<td>✓ 2号留体量内</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§4.3 不大挖山</td>
+<td>✓ 挖的是混凝土体量非山体</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§12.2 起伏有依据</td>
+<td>✓ 折面由跨度/排烟/采光</td>
+<td>守住</td>
+</tr>
+<tr>
+<td>§12.1 瓦屋面唯一主形</td>
+<td>✗ <strong>用混凝土几何体替代</strong></td>
+<td><strong>改写→第4节变更单</strong></td>
+</tr>
+<tr>
+<td>§12.3 材料清单(无混凝土)</td>
+<td>⚠ 混凝土不在清单</td>
+<td>需小砚认定</td>
+</tr>
+<tr>
+<td>§18 无依据曲面/第二套主系统</td>
+<td>⚠ 折面/洞口均给功能依据，但"是否构成第二套主系统"须认定</td>
+<td>需小砚认定</td>
+</tr>
+<tr>
+<td>§4.4 气候(遮阳/排水)</td>
+<td>⚠ 混凝土少檐，须折面出挑/木檐补足</td>
+<td>专项</td>
+</tr>
+<tr>
+<td>20号陈酿嵌北崖</td>
+<td>⚠ 局部嵌崖</td>
+<td>地勘/结构专项</td>
+</tr>
+<tr>
+<td>§12.3 必答(重量/防水/冻融/维护)</td>
+<td>⚠ 清水混凝土冻融/渗漏/维护须答</td>
+<td>专业复核</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 《设计变更决定单》草案（仅 B 案需要，按 v2.1 §20 修改机制）</h2>
+<blockquote>
+<p>依据 v2.1 §2「修改机制：任何锁定项调整，必须书面说明原因、影响范围、替代方案、造价/工期/运营影响，并经投资方与运营方确认」。本单为草案，待小砚（运营方）+投资方签署方生效。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>变更对象</strong></td>
+<td>§12.1 主建筑方向：由"连续深檐瓦屋面唯一主形"→允许"清水混凝土几何折叠/挖洞/穿插"作为主形候选之一</td>
+</tr>
+<tr>
+<td><strong>变更原因</strong></td>
+<td>运营方希望突破三角形态、探索山谷各种可能；几何折叠/挖洞/穿插能以"功能驱动形式"强化看得见叫得应，并回应指定的当代建筑语汇</td>
+</tr>
+<tr>
+<td><strong>影响范围</strong></td>
+<td>主形语言、材料体系(§12.3)、结构选型(§17)、造价与维护(§16)、日照/热工(§4.4)；不影响功能编号(§8)、动线(§10)、三人运营(§6.4)、三角院成立(§7)——这些 B 案均守住</td>
+</tr>
+<tr>
+<td><strong>替代方案</strong></td>
+<td>A 案（瓦屋面框架内突破三角，无需变更）作为并列备选；若变更不获批，回落 A 案</td>
+</tr>
+<tr>
+<td><strong>造价/工期/运营影响</strong></td>
+<td>清水混凝土一次成型对模板与工艺要求高、当地施工能力与维护(冻融/渗漏)须专项评估；相对瓦木造价与维护等级须造价专项出表（§19.4）</td>
+</tr>
+<tr>
+<td><strong>需专业复核</strong></td>
+<td>结构(挖洞转换/穿插节点/抗冻)、给排水(混凝土防水/泡脚水)、消防(明火与材质防火)、地勘(嵌崖)</td>
+</tr>
+<tr>
+<td><strong>决策节点</strong></td>
+<td>方案定案前（v2.1 §17 决策清单口径）</td>
+</tr>
+<tr>
+<td><strong>责任方</strong></td>
+<td>运营方(小砚)+投资方 书面确认；建筑+结构+造价 提供技术依据</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 修改落实表（按 v2.1 §20.4 模板）</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>任务书/反馈要求</th>
+<th>图/页码</th>
+<th>状态</th>
+<th>设计推导摘要</th>
+<th>待确认/专业复核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>方案一延展(出图+对文件书面推导)</td>
+<td>本文件第1节 + S1实景图</td>
+<td>已落实</td>
+<td>§5.2 十问逐条推导</td>
+<td>面积/剖面/日照/结构 待专业</td>
+</tr>
+<tr>
+<td>2</td>
+<td>回复《工作指导书》成果要求</td>
+<td>第1节各条</td>
+<td>已落实(推导层)</td>
+<td>功能/面积/动线/三角/剖面推导框架</td>
+<td>面积台账+设备表 待设备</td>
+</tr>
+<tr>
+<td>3</td>
+<td>回复《审核意见》§5.2</td>
+<td>第1.1–1.10</td>
+<td>已落实</td>
+<td>强制推导格式逐条</td>
+<td>逐条待专业复核</td>
+</tr>
+<tr>
+<td>4</td>
+<td>突破三角(符合v2.1)</td>
+<td>A案 第2节 + A案图</td>
+<td>已落实</td>
+<td>瓦屋面框架内破三角</td>
+<td>20号嵌崖 待地勘/结构</td>
+</tr>
+<tr>
+<td>5</td>
+<td>突破三角(几何折叠/挖洞/穿插)</td>
+<td>B案 第3节 + B案图</td>
+<td>已落实(探索)</td>
+<td>功能驱动折叠/挖洞/穿插</td>
+<td>主形/材料/结构 待小砚+专业</td>
+</tr>
+<tr>
+<td>6</td>
+<td>§18第6点(不增新形态)是否遵循</td>
+<td>第0节</td>
+<td>已确认不遵循(运营方同意)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7</td>
+<td>主形锁定冲突处理</td>
+<td>第4节变更决定单</td>
+<td>已落实(草案)</td>
+<td>交小砚+投资方书面裁定</td>
+<td>待签署</td>
+</tr>
+<tr>
+<td>8</td>
+<td>六项校核(功能/三角/主形工程化/剖面/风险/推导)</td>
+<td>—</td>
+<td><strong>未落实</strong></td>
+<td>本轮为探索+推导，六项图纸仍欠</td>
+<td>待放行后进入§19阶段1–2</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>6. 交还给小砚的决策项（请圈选/签署）</h2>
+<ol>
+<li><strong>主形</strong>：( ) 只推 A 案（瓦屋面破三角，不动文件）　( ) A+B 并推，签署第4节《变更决定单》放行 B　( ) 只探索 B 几何案（需先签变更单）</li>
+<li><strong>B 案材料</strong>：清水混凝土是否接受为"石为芯"的当代表达 —— ( )接受 ( )不接受，改回瓦木/毛石</li>
+<li><strong>下一步</strong>：( ) 我即刻进入 v2.1 §19 阶段1–2 六项校核（功能面积台账 / 3人看顾图 / 三条动线 / 三角(或几何)院成立性图 / 关键剖面 / 结构概念）　( ) 先再出几版 A/B 形态比较</li>
+</ol>
+<hr />
+<h2>7. 必须专业复核、AI 不签字事项（汇总）</h2>
+<p>结构选型与挖洞转换/穿插节点/抗震/抗冻、屋面/混凝土防水与冻融、火灶排烟与消防安全边界、嵌崖地勘/边坡/落石、给排水与泡脚水、食品生产环境洁污、造价工期维护。<strong>本文件任何图与结论均不构成上述专业结论</strong>（v2.1 §3.1、§0 总原则13）。</p>
+<hr />
+<h2>8. 全方案生图提示词清单（先备齐，一起放进生图软件）</h2>
+<blockquote>
+<p><strong>用法</strong>：本清单一次备齐 S1 / A案 / B案 三个方案的全部图，方便"提示词都准备好了，再一起放进生图软件"。每条含【中文意图】【英文提示词（喂给模型）】【负面提示词】。</p>
+<p><strong>两条纪律</strong>：① 所有图只作<strong>气质/概念验证</strong>，不证明结构/防水/造价/施工（v2.1 §12.4）；② 标【模拟·非AI生图】的（如日照斑块图），须用 Blender/日照模拟真实坐标出，<strong>不能用 AI 想象</strong>，否则违 §4.4"不得套固定值/不得凭空"。</p>
+<p><strong>共同风格锚（S1 与 A案 通用，粘在每条英文提示词前）</strong>：
+<code>photorealistic architectural visualization, remote valley in Pingjiang Hunan China, three-pronged radiating red-earth valley floor, pine-covered reddish granite cliffs, small grey clay tile continuous deep-eave roof, rubble granite stone base walls, exposed timber and steel-timber structure, low-lying vernacular winery that grows from the terrain, overcast soft light or warm dusk, no glass curtain wall, no fancy resort look, humble craft distillery --ar 3:2</code></p>
+<p><strong>共同负面提示词（S1 与 A案 通用）</strong>：
+<code>glass curtain wall, skyscraper, modern resort hotel, neon, umbrella cluster, radial parasols, second roof system, sculptural spire, sawtooth roof, over-lit facade, oversized central sculpture, cartoon, watermark, text</code></p>
+</blockquote>
+<h3>8.1 方案一 S1（瓦屋面主形）——含"定稿前欠的图片"</h3>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>中文意图</th>
+<th>英文提示词（接共同风格锚后）</th>
+<th>负面/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1-A</strong></td>
+<td>★已出：谷口走近·暮色 hero（连续深檐低伏、火塘暖光漫檐下、人与长桌在檐廊）</td>
+<td><code>approaching from the valley mouth at dusk, continuous low deep eaves pressing down, warmest fire-pit glow spilling under the eaves, people at long timber tables in the eave gallery, tiled roof unifying three sides, open transparent courtyard with no central structure</code></td>
+<td>已有 <code>S1_photoreal_valley.jpg</code>，可重出精修</td>
+</tr>
+<tr>
+<td><strong>S1-B</strong></td>
+<td>★已出：暮色鸟瞰（屋面因功能起伏、20号陈酿嵌北崖、夜里只亮酒馆+火灶）</td>
+<td><code>dusk aerial bird's-eye view, one continuous tiled roof over three functional edges, roof undulating only by function (brewing side higher for flue/span, tavern side pressed low), aging cellar tucked into north cliff, at night only tavern and fire-pit glow</code></td>
+<td>已有，可重出</td>
+</tr>
+<tr>
+<td><strong>S1-C（欠·补）</strong></td>
+<td>檐下人视：聚人深檐廊，檐口净高亲人（2.4–2.8m），冬至外摆落在阳光斑块里</td>
+<td><code>human eye-level view standing under the deep eave gallery, intimate eave height about 2.5m, winter low sun patch falling on outdoor seating, people gathering, warm timber columns, grey tile eave line overhead, rubble stone wall beside</code></td>
+<td>检验"聚人檐净深≥3.5–4m" G30 气质</td>
+</tr>
+<tr>
+<td><strong>S1-D（欠·补）</strong></td>
+<td>中庭抬头看：站在中庭仰视三边连续瓦屋面在头顶收拢，天光通透无中心构筑</td>
+<td><code>looking up from the center of the open courtyard, three tiled roof edges converging overhead, transparent sky, no central umbrella or sculpture, workers glimpsed at the brewing edge, tavern seating on another edge, sense of one roof embracing the yard</code></td>
+<td>检验 §7.3 中庭通透</td>
+</tr>
+<tr>
+<td><strong>S1-E（欠·补）</strong></td>
+<td>卸货/生产侧：靠山毛石厚墙一侧，外部货运口 + 内部取用口，1号仓储界面（非表演面）</td>
+<td><code>service and loading side of the winery, thick rubble granite retaining wall against the hillside, external freight doorway and internal access door, storage and cellar interface, utilitarian back-of-house, morning overcast light</code></td>
+<td>检验 §8 1号仓储+靠山界面</td>
+</tr>
+<tr>
+<td><strong>S1-F（欠·补）</strong></td>
+<td>夜态克制：整体只亮酒馆 + 火灶两处暖光，其余暗，无亮化工程</td>
+<td><code>night scene, restrained lighting, only the tavern and the fire-pit emit warm light, the rest of the winery stays dark, no facade floodlighting, tiled roof silhouette against dark pine cliffs, stars</code></td>
+<td>检验 §12.5 夜态只亮两处</td>
+</tr>
+<tr>
+<td><strong>S1-G（欠·模拟）</strong></td>
+<td>冬至/夏至日照斑块图</td>
+<td>【模拟·非AI生图】须用 Blender 太阳系统 + 真实坐标/等高线跑冬至(直射0–3h)与夏至(7–9.8h)阴影，叠平面图</td>
+<td><strong>不得 AI 想象</strong>，§4.4</td>
+</tr>
+</tbody>
+</table>
+<h3>8.2 突破三角 A案（瓦屋面放射破三角）</h3>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>中文意图</th>
+<th>英文提示词（接共同风格锚后）</th>
+<th>负面/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A-1</strong></td>
+<td>★已出：瓦屋面折叠破三角·鸟瞰（三片瓦浪顺谷三臂放射、汇于中央敞口火塘院）</td>
+<td><code>aerial view, one continuous tiled roof splitting into three radiating arms following the valley's three natural prongs, three tiled roof waves converging toward a central open fire-pit courtyard, folded roof planes (brewing arm higher, tavern arm lower), rubble stone bases, red-earth courtyard</code></td>
+<td>已有 <code>A_break_tile.jpg</code>，可重出</td>
+</tr>
+<tr>
+<td><strong>A-2</strong></td>
+<td>中央敞口放射中庭·人视：站在三臂交汇口，三条功能边同时在视野里，火塘居中</td>
+<td><code>standing at the convergence of three radiating arms, human eye level, three tiled-roof working edges all visible at once around an open courtyard, central fire pit, brewing visible on one arm, tavern on another, workshop on the third, everyone can see and call across</code></td>
+<td>检验 §11 看得见叫得应</td>
+</tr>
+<tr>
+<td><strong>A-3</strong></td>
+<td>三臂交汇屋面收口·近景（本案最难节点：谷线/排水/防漏，观感须连续不碎）</td>
+<td><code>close view of where three tiled roof arms meet, the roof ridges gathering into a low continuous knot, valley gutters between arms, one coherent roof not three patched roofs, grey clay tiles, timber structure underneath</code></td>
+<td>检验 2.4 交汇收口节点</td>
+</tr>
+<tr>
+<td><strong>A-4</strong></td>
+<td>贴北崖臂·剖透：放射的一臂坐在毛石挡土墙上，20号陈酿嵌崖，落石退让</td>
+<td><code>one radiating arm sitting on a thick rubble stone retaining wall against the north cliff, aging cellar embedded into the hillside, rockfall setback, tiled roof arm reaching out toward the courtyard, section-like cutaway feel</code></td>
+<td>检验 2.6 嵌崖臂</td>
+</tr>
+</tbody>
+</table>
+<h3>8.3 突破三角 B案（清水混凝土·单一几何操作）——白模研究气质</h3>
+<blockquote>
+<p><strong>B案风格锚（替换上面的共同锚，粘在每条英文提示词前）</strong>：
+<code>white monochrome architectural study model aesthetic in the manner of Saul Kim / Saul Kim Studio, single clean geometric operation per building, fair-faced concrete monolith, matte plaster-white massing, tiny human figures for scale, neutral studio background or misty valley context, one bold move not many, restrained and abstract, soft diffuse light --ar 3:2</code></p>
+<p><strong>B案负面提示词</strong>：
+<code>busy ornament, multiple competing gestures, glass curtain wall, colorful materials, neon, resort look, cartoon, watermark, text, cluttered detail</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>中文意图</th>
+<th>英文提示词（接 B案风格锚后）</th>
+<th>负面/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>B-1</strong></td>
+<td>★已出：单一混凝土体量·三翼折叠抱中央火塘院（Box Mitosis 克制版：一个体量内部裂出中庭）</td>
+<td><code>a single concrete volume, three folded wings embracing one central sunken fire-pit courtyard, the mass split open from within to carve the yard (not split into separate buildings), one continuous monolith, white study-model look, figures for scale</code></td>
+<td>已有(浏览器画廊)，本次可重出精修</td>
+</tr>
+<tr>
+<td><strong>B-2</strong></td>
+<td>折叠面屋顶·体量：折面对应三翼不同跨度/排烟/采光（酿造翼高、酒馆翼低），折是结果非造型</td>
+<td><code>folded plane roof over a single concrete winery, each fold responding to a different function (brewing wing tall for flue and span, tavern wing low and intimate), the folding is structural logic not decoration, one geometric move, white model</code></td>
+<td>检验 3.4 单一操作</td>
+</tr>
+<tr>
+<td><strong>B-3</strong></td>
+<td>端墙"观看洞口"·人视：Projected Circle / Torn Wrapper 语汇，隔墙也能看见彼此工作面</td>
+<td><code>interior human view, a clean circular or torn opening carved in a concrete end wall, letting people see through to the brewing workspace beyond, "everyone can see and call across", fair-faced concrete, one aperture as the single gesture, figures</code></td>
+<td>检验 3.2 观看洞口</td>
+</tr>
+<tr>
+<td><strong>B-4</strong></td>
+<td>中央下沉院 + 天井拔风·剖透：火塘居中、天井采光/拔风口，围观动线</td>
+<td><code>cutaway section view, a sunken concrete courtyard with a central fire pit, a circular skylight oculus above for daylight and stack ventilation, people gathered around watching distillation, thick concrete walls, mist, white model section</code></td>
+<td>检验 3.5 排烟/采光</td>
+</tr>
+<tr>
+<td><strong>B-5</strong></td>
+<td>穿插生产条·体量：一条木/玻璃生产条穿过混凝土主体，把洁净灌装/贴标连续工作带贯通</td>
+<td><code>a light timber-and-glass linear production bar piercing straight through the heavy concrete monolith, expressing the continuous clean bottling-labeling worktrack passing through, contrast of light insertion vs heavy mass, single interpenetration gesture, white model, figures</code></td>
+<td>检验 3.9 穿插节点(承重现实待结构)</td>
+</tr>
+<tr>
+<td><strong>B-6</strong></td>
+<td>混凝土 + 毛石 + 木·材料关系近景：主体清水混凝土、靠山毛石墙裙、亲人界面露木檐廊</td>
+<td><code>close material study, fair-faced concrete main body, rubble granite stone plinth against the hillside, exposed warm timber eave gallery at the human-facing edge, three materials in dialogue, "stone at the core" contemporary expression, soft light</code></td>
+<td>检验 3.6 材料认定项</td>
+</tr>
+</tbody>
+</table>
+<h3>8.3b 出图状态（0801 更新：全套已完成）</h3>
+<p>全部视图已在即梦（图片 5.0 Pro/Lite，3:2/2K）生成并完成人工筛选，<strong>17 张定稿图</strong>存于 <code>updated-20260801</code> 图集，覆盖：S1-A~F、A-1~4、B-1~7。其中 A-2、B-7 经修正句重出（灰黑小青瓦、中庭禁水景、非湖景非度假感）。逐组评级与提示词修正规律见《即梦出图评图记录 XY20260801》；成图与设计说明合成于成果页《三方案比选与设计说明》。</p>
+<p>仍不可 AI 生成：S1-G 冬至/夏至日照斑块图——须 Blender 按真实坐标模拟（§4.4）。</p>
+<h3>8.4 待小砚确认的生图口径</h3>
+<ol>
+<li><strong>先出哪几张</strong>：三方案全出，还是先 S1 补欠图（S1-C~F）+ 各案一张代表？</li>
+<li><strong>B案要不要"实景版"</strong>：目前 B 全部走"白模研究气质"（最贴 Saul Kim、也最诚实地表示"仅探索"）；若小砚想看 B 落进真实山谷的实景，再加一版实景提示词。</li>
+<li><strong>风格统一</strong>：S1/A 走照片级、B 走白模——两种气质并置是有意的（B 用白模表达"未定稿/需变更单"），若要全部照片级请示下。</li>
+</ol>
+<hr />
+<p><em>本稿为方向探索与设计推导，未定稿。最终以小砚（+投资方）的裁定与后续有资质设计单位签字图纸为准。图片为气质/概念验证（HF 生成），不证明结构、防水、造价与施工可行性（v2.1 §12.4）。</em></p>
+<hr />
+<h2>9. 【XY20260802】对抗式审查与三维工作模型修订记录</h2>
+<h3>9.1 这一节是什么</h3>
+<p>0802 对三个三维沙盘工作模型做了一次<strong>对抗式审查</strong>：默认立场"不合规"，把 <code>build.js</code> 里全部坐标、角度、尺寸重新算了一遍（翼的端点、出檐后实际占位、转角间隙、中庭内切尺寸、脊高与檐口高差、坡度、挖方量），逐条对照锁定项。结论是模型有多处与锁定值不符，其中两处是<strong>模型与本文件自述相矛盾</strong>。</p>
+<p><strong>处理原则</strong>：更正只发生在模型与本文件的<strong>表述</strong>上，<strong>没有改动任何一条锁定项</strong>；凡涉及小砚权限的，一律列入 9.3 交裁定，不代为放过。</p>
+<h3>9.2 已更正项（依据是已锁定值，属纠错不属变更）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>原状（错）</th>
+<th>锁定依据</th>
+<th>现改为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>模型檐口高 3.9–8.8m</td>
+<td>R10 形态四选：S1 <strong>檐口恒 2.70m</strong></td>
+<td>三案檐口统一 2.70m（毛石墙裙 1.40 ＋木身 1.30）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>模型瓦坡 10.4°–21.5°</td>
+<td>R11：坡度由 1:5(11°) 改为 <strong>1:2.2(24.4°)</strong>；小青瓦最小约 1:2，低于此会漏</td>
+<td>统一 1:2.2（24.4°）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>酿造边脊高 7.00m</td>
+<td>R11：<strong>6.6m 控高线</strong>，实测最高 5.45 余 1.15</td>
+<td>由「檐口 2.70＋坡 1:2.2＋各边跨度」反推为 6.15／5.70／5.34m，全部在控高线下</td>
+</tr>
+<tr>
+<td>4</td>
+<td>檐下净深 2.05m</td>
+<td><strong>G30 聚人檐净深 ≥3.5–4m</strong></td>
+<td>改为双向出檐：朝中庭挑 3.00m、背中庭 1.20m，净深 <strong>3.55m</strong>（压住下限）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>S1 建成四面围死的方院，西侧另起一条瓦屋面仓储翼</td>
+<td>§7 三条真实功能边；20260606「<strong>三边不能完全封闭</strong>」</td>
+<td>改为三条边的"微展开三角"，转角留缝；西侧靠山还原为<strong>毛石承重挡土厚墙＋山体台地</strong>（承载 1 号仓储/20 号陈酿），不是第四条主形边</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A 案中庭上方 R=9.4m、约 230㎡ 六边形收口罩，且刺穿酒馆边屋面</td>
+<td>§7.3 禁永久大型中心伞／§18</td>
+<td>删除。三边改为顺谷方位外拉的<strong>切向功能边</strong>（长轴垂直于半径），中庭是敞口交汇场</td>
+</tr>
+<tr>
+<td>7</td>
+<td>A 案三臂端点两两相距 47–50m，最远臂端距中心 29.7m</td>
+<td>§11.4 看得见叫得应／G25 重物短线</td>
+<td>边长与外拉距压缩，最远两点落回可喊话范围（仍须《3人看顾图》验证）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>B 案建成三个独立混凝土块，净距 4.5–6.0m</td>
+<td>§7 禁止拆成多个独立石体块；<strong>本文件 §3.1 自己已否掉此做法</strong></td>
+<td>加三处转角连接体连成一栋（本文件 §3.1 选定的做法②）</td>
+</tr>
+<tr>
+<td>9</td>
+<td>B 案 12 个人形悬空在下沉院上方 2.3–3.1m；36m 玻璃条一端 18m 无支撑悬挑、另一端穿墙；下沉院 48.7° 陡壁无台阶、挖方约 367m³</td>
+<td>建模错误，非设计</td>
+<td>人形高程归位；生产条两端均落在体量上；下沉院改 1.2m 缓坡，挖方降至约四分之一</td>
+</tr>
+<tr>
+<td>10</td>
+<td>S1 五只陈酿酒坛全部埋入坡体 0.6–1.16m；挡土墙距酿造边台基仅 1.30m 且屋檐已戳入墙体</td>
+<td>建模错误</td>
+<td>酒坛坐回坡面；挡土墙外退，留出 4.2m 檐沟／明沟／检修与落石缓冲带</td>
+</tr>
+</tbody>
+</table>
+<h3>9.3 交小砚裁定的项（设计组不代决）</h3>
+<ol>
+<li><strong>天井到底定多大</strong>——知识库 B 组第 1 题，至今未圈。挑檐越深，聚人檐越好用，露天中庭越小（R11 曾因内檐挑 2.60m 使中庭净空只剩半径 2.0–2.4m，结论"中庭是心，不是场"）。现工作模型取的是折中值，<strong>不作数</strong>。</li>
+<li><strong>A 案顺谷张开算不算越 §18「禁止放射作整体主形」</strong>——设计组倾向未越（张的是瓦屋面的功能边，不是伞／玻璃／曲面，且有地形硬依据），但只能由小砚定。同时须一并裁定：A 案转角<strong>大开口、三片屋面不相接</strong>，此时 §12.1"一套连续屋面统摄"是否仍算守住。</li>
+<li><strong>B 案的变更单覆盖范围</strong>——《设计变更决定单》只覆盖 §12.1（瓦屋面唯一主形）与 §12.3（材料清单）。B 案另触 <strong>R9 外立面否决项「玻璃盒子」</strong>（那条木／玻洁净生产条），此项不在变更单覆盖内，须单独裁定或整改。§7"不得拆成多个独立体块"同样不在覆盖内。</li>
+</ol>
+<h3>9.4 仍然成立、经复核未被推翻的部分</h3>
+<ul>
+<li>S1 的三条边确为<strong>切向功能边</strong>（长轴垂直于半径，三者恒差 90°），朝中庭界面合计 73m，§7 的空间原型在 S1 里成立。</li>
+<li>S1 中庭通透：无伞、无雕塑、无水景、无密集绿化；火塘偏心不作造型标志（§7.3、§18 守住）。</li>
+<li>S1／A 材料严格在 §12.3 清单内（瓦／毛石／木），无混凝土无玻璃。</li>
+<li>靠山体块为<strong>加建地貌</strong>而非开挖洞穴，白酒未进山洞（§0 总原则9、§4.3 守住；挖方或填方仍须以真实地形图复核）。</li>
+<li>B 案对 §12.1／§12.3 的改写在页面与本文件中均已明写并附变更单要求，<strong>未被静默放过</strong>。</li>
+</ul>
+<h3>9.5 纪律</h3>
+<p>本节所依据的是三维<strong>体量工作模型</strong>与已锁定的书面控制值，<strong>不构成</strong>结构、防水、排烟、造价、施工可行性结论。转角收口、屋面排水、挡土与落石、下沉院防涝、清水混凝土抗冻，均须有资质单位签字，AI 设计组不代签。</p>
+<blockquote>
+<p>在线查看：三方案比选页 / 三维工作模型 / 本文件网页版，均在 <a href="https://tuan19960216-crypto.github.io/xiaoyoutian/">https://tuan19960216-crypto.github.io/xiaoyoutian/</a></p>
+</blockquote>
+<footer><p>小有天 AI 设计组 ｜ 未定稿，最终以张小砚（＋投资方）裁定与有资质设计单位签字图纸为准。</p></footer>
+</div>
+<div id="lb"><img id="lbi" alt=""></div>
+<script>
+(function(){var lb=document.getElementById('lb'),i=document.getElementById('lbi');
+document.querySelectorAll('figure img').forEach(function(m){m.onclick=function(){
+ i.src=m.src;lb.style.display='flex';document.body.style.overflow='hidden';};});
+lb.onclick=function(){lb.style.display='none';document.body.style.overflow='';};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.style.display='none';document.body.style.overflow='';}});})();
+</script></body></html>
