@@ -1,0 +1,140 @@
+<!doctype html><html lang=zh><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>装修一站式 · 整合稿：产品、流程、原型与小砚案例</title>
+<style>
+:root{--ink:#1c1a19;--mut:#6b645d;--line:#e2ddd6;--bg:#faf8f5;--warm:#a8622a;--red:#b0413e;--yel:#b8860b;--grn:#2e7d32}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);line-height:1.9;font-family:"Noto Serif CJK SC","Songti SC","Source Han Serif CN",Georgia,serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px 80px}
+header{padding:56px 0 20px;border-bottom:2px solid var(--ink)}
+h1{font-size:1.8rem;margin-bottom:6px}
+.sub{color:var(--mut);font-size:.88rem;font-family:system-ui}
+h2{font-size:1.25rem;margin:44px 0 12px;padding-top:20px;border-top:1px solid var(--line);color:var(--warm)}
+h3{font-size:1.05rem;margin:24px 0 8px}
+p{margin:10px 0;font-size:.95rem}
+strong{color:var(--ink)}
+em{font-style:normal;color:var(--warm)}
+table{width:100%;border-collapse:collapse;font-size:.84rem;font-family:system-ui;background:#fff;margin:14px 0}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#f2eee9;font-weight:600;white-space:nowrap}
+td:first-child{white-space:nowrap;text-align:center;width:32px}
+.note{background:#f6f1ea;border-radius:6px;padding:14px 18px;margin:18px 0;font-size:.9rem;border-left:4px solid var(--warm)}
+.tag{display:inline-block;font-size:.72rem;font-family:system-ui;border:1px solid var(--line);padding:1px 8px;border-radius:12px;color:var(--mut);margin-right:4px}
+ul,ol{padding-left:1.4em;font-size:.93rem}
+li{margin:5px 0}
+.status{display:inline-block;width:18px;text-align:center}
+hr{border:none;border-top:1px solid var(--line);margin:30px 0}
+footer{text-align:center;padding:30px 0;color:var(--mut);font-size:.8rem;font-family:system-ui;border-top:1px solid var(--line);margin-top:40px}
+</style>
+</head><body>
+<div class=wrap>
+<header>
+<h1>装修一站式 · 整合稿</h1>
+<p style="font-size:1.1rem;margin:8px 0 0;color:var(--warm)">产品、流程、原型与小砚案例</p>
+<div class=sub>XY20260804v2 ｜ fanny ＋ Claude ｜ 内部产品稿<br>
+本稿整合并取代 0804 探索稿与 MVP 定义稿的重复部分；引擎源码与演示报告另附。</div>
+</header>
+
+<h2>一、一页总览</h2>
+
+<p><strong>产品一句话</strong>：做「<em>业主的 AI 技术代表</em>」——从有装修念头到对接装修公司，全程站在业主一侧，掌握贯穿全程的权威表示，保证每一次信息转换不失真、失真了能被查出来。<strong>只收业主服务费，永不赚材料差价、不接装修公司返佣。</strong></p>
+
+<p><strong>不是什么</strong>：不是"一站式装修平台"。量房渲染（酷家乐）、找公司（土巴兔）这些单点早有巨头，"每一环都没人做"是错觉。真正的空位是三个：深度需求澄清（现有产品全跳过它直奔成交）、设计到施工之间的<strong>意图保真</strong>（没人对"做出来跟图不一样"负责）、<strong>业主侧的技术代表</strong>（传统监理只管施工质量，不管图对不对、报价实不实）。</p>
+
+<p><strong>与张小砚项目的关系</strong>：小砚项目不是客户，是<em>灵感来源和第一块试验田</em>。这个产品的每一件核心制度都先在小砚项目里用真实代价跑通过一遍。产品要做的不是发明它们，是把它们从"一个高投入的孤例"压缩成"三十分钟起步、按单收费、所有人可用"的服务。</p>
+
+<p><strong>已有的东西（截至 0804）</strong>：MVP「报价单体检」原型已跑通——20 条断言规则全部机跑、样例报告已出、引擎源码可复用。不是 PPT，是能跑的代码。</p>
+
+<h2>二、第一性原理：装修剥掉行业惯例后剩下什么</h2>
+
+<p>一端是一个人：有一个空间、一笔钱、一组自己也说不清的偏好、有限时间、零专业知识。另一端是终局：空间被物理改造成符合期望的样子，预算内、安全、可维护。中间有<strong>七次省不掉的信息转换</strong>：</p>
+
+<table>
+<tr><th>#</th><th>转换</th><th>行业著名痛点＝该转换的失真</th></tr>
+<tr><td>T1</td><td>模糊偏好 → 明确需求</td><td>设计师听不懂业主</td></tr>
+<tr><td>T2</td><td>物理现状 → 数字描述（量房）</td><td>尺寸打架、隐蔽工程不明</td></tr>
+<tr><td>T3</td><td>需求＋现状 → 空间方案</td><td>效果图好看做不出</td></tr>
+<tr><td>T4</td><td>方案 → 钱的数字</td><td>低价签约、增项无底</td></tr>
+<tr><td>T5</td><td>方案 → 可施工指令</td><td>工人看不懂图随手改</td></tr>
+<tr><td>T6</td><td>指令 → 物理执行</td><td>委托—代理失控</td></tr>
+<tr><td>T7</td><td>执行 → 验证收口</td><td>业主没有比对能力</td></tr>
+</table>
+
+<p>"一站式"的第一性定义：<strong>有一个角色掌握贯穿全程的权威表示，对七次转换的保真负责。</strong>传统行业没有这个角色——设计师管到 T5，监理只管 T6，没人管全链。</p>
+
+<h2>三、十步流程（从"想装修"到"对接装修公司"）</h2>
+
+<table>
+<tr><th>步</th><th>做什么</th><th>核心难点</th><th>解法</th></tr>
+<tr><td>1</td><td>装修前置课＋决策清单</td><td>用户不知道自己不知道什么</td><td>免费信任入口；LLM 对话</td></tr>
+<tr><td>2</td><td>结构化需求书</td><td>人说不清要什么，但看图能说"不是这个"</td><td>图像偏好排除法＋生活方式访谈＋预算校准</td></tr>
+<tr><td>3</td><td>可信数字底图（量房）</td><td>看不见的才要命（承重墙/水电/防水层）</td><td>LiDAR＋测距仪双备份；数据分证据等级</td></tr>
+<tr><td>4</td><td>几版空间意象</td><td>AI 图说服力最强、信息量最假</td><td>图钉死为 X 类证据；每图挂平面与造价区间</td></tr>
+<tr><td>5</td><td>平面定案</td><td>约束满足问题，靠人脑必漏</td><td>断言脚本准入制：通道≥900、插座距水≥600</td></tr>
+<tr><td>6</td><td>透明 BOM</td><td>信息不对称的心脏</td><td>BOM 与几何绑定自动算量；比价双口径；不赚差价</td></tr>
+<tr><td>7</td><td>深化施工图</td><td>非结构性内装多数不需签章报建</td><td>AI 出全套 dxf＋合规预检</td></tr>
+<tr><td>8</td><td>固定量清单招标＋合同</td><td>报价口径不一，低价靠漏项</td><td>量与材料锁死，公司只填单价工期</td></tr>
+<tr><td>9*</td><td>节点验收、隐蔽留档</td><td>业主看不懂现场</td><td>按图生成验收清单，AI 比对标红</td></tr>
+<tr><td>10*</td><td>竣工比对＋一户一档</td><td>交付后无人负责</td><td>数字档案＝产品（漏水能看到墙里水管怎么走）</td></tr>
+</table>
+
+<div class=note>* 9–10 碰现场重资产，是另一门生意。<strong>先做 1–8 纯信息服务的最小闭环</strong>（零现场、边际成本近零），9–10 用"验收清单＋档案"轻量兜住。</div>
+
+<h2>四、审查修正记录</h2>
+
+<p><strong>叩实（对市场事实）</strong>：打掉"一站式平台"定位，改为"业主的 AI 技术代表"。</p>
+
+<p><strong>破妄（三处自欺）</strong>：①"做过小砚就懂装修"——假设未验证：小砚是极端值用户（高决策质量、高耐心、高客单），大众用户全反过来，方法可平移、节奏必须重做（38 条共识式深谈要压缩成 30 分钟产品流程）；②"断言脚本拦住大部分错误"——它拦几何错误，装修翻车重灾区是工艺错误，得靠现场照片验收，两套机制都要有；③"流程列全了"——真实装修是并发＋回滚的环，变更必须是一等公民。</p>
+
+<p><strong>归真（捡回两个被误杀的）</strong>：①"AI 出施工图"在新建语境被否三次，它的存活条件恰好是装修（非结构内改不需签章）——整个构想最硬的地基；②fanny 原始定义"到对接装修公司为止"有存活理由——前 8 步纯线上可跑通，是更稳的切入。</p>
+
+<h2>五、MVP：报价单体检（已有可跑原型）</h2>
+
+<p><strong>为什么是它</strong>：付费意愿最高的一刻＝用户攥着一份不知道敢不敢签的报价单；零重资产；能力已验证；前后都接得上（往前长出需求澄清，往后长出招标陪跑）。</p>
+
+<p><strong>输入</strong>：报价单（OCR）＋面积/城市；有则再收平面图、合同草案。</p>
+
+<p><strong>输出</strong>：四层报告——①结论区（红灯黄灯数；报价 X 万 vs 预估真实落地价 Y1–Y2 万）；②原报价单逐行标注；③问题清单，每条＝类型/严重度/依据/钱的影响/「这样问」话术（产品的灵魂：用户要的不是判决书，是下一句话该说什么）；④边界声明。</p>
+
+<p><strong>断言清单 v0.1 四组 24 条</strong>：A 完整性（水电无封顶、拆旧/清运/找平/闭水/成品保护等漏项、管理费计取基数）；B 单价（对城市基准区间，超上限预警、显著低于下限＝引流项预警）；C 数量（刷漆≤建面×3.5、贴砖≈套内×0.9–1.1、水电米数区间）；D 条款（增项书面签认、首付≤40%、延期违约、"同档次品牌"话术、保修不得低于国家最低：隐蔽 5 年/其余 2 年）。</p>
+
+<p><strong>原型状态（0804 实测）</strong>：20 条规则已写成可运行代码；真实报价单实测跑出 6 红 6 黄 1 绿；判定全部由规则完成，LLM 只做 OCR 归一化和话术措辞——结论可解释、可回溯到行号、错了改规则。</p>
+
+<div class=note><strong>最弱一环（诚实）</strong>：基准价库现为示例区间，是产品真正的护城河也是当前短板，需用几十份真实成交报价单喂实并按城市分层。工艺层面的坑（防水刷没刷够）v0.1 查不了，须到现场机制。</div>
+
+<p><strong>商业口径</strong>：单份体检锚"一顿火锅钱"；增值路径 体检（单次）→ 重新招标陪跑（按单）→ 全程技术代表（按工程额比例）。</p>
+
+<h2>六、张小砚案例：这套产品的种子 Demo</h2>
+
+<p>小砚项目（新建酒坊，非装修）在极端值上把整套打法验证了一遍。按十步框架对号：</p>
+
+<table>
+<tr><th>步</th><th>小砚项目对应</th><th>状态</th></tr>
+<tr><td>1</td><td>顶层定位、品牌概念、人物画像</td><td class=status>✅</td></tr>
+<tr><td>2</td><td>38 条始终共识＋13 轮变化账＋十不能</td><td class=status>✅</td></tr>
+<tr><td>3</td><td>地形图（缺比例）、日照模拟、航拍</td><td class=status>🟡</td></tr>
+<tr><td>4</td><td>外立面四选、S1 锁定、三案 17 张实景图</td><td class=status>✅</td></tr>
+<tr><td>5</td><td>三案＋三维模型＋对抗审查</td><td class=status>🟡</td></tr>
+<tr><td>6</td><td>设备参数齐但未选型</td><td class=status style="color:var(--red)">🔴</td></tr>
+<tr><td>7</td><td>新建必须设计院签章</td><td class=status style="color:var(--red)">🔴</td></tr>
+<tr><td>8–10</td><td>未到</td><td class=status>⬜</td></tr>
+</table>
+
+<div class=note><strong>卡点＝三样外部输入＋四个决策</strong>：消防定性（甲类与否）、地形图比例尺（等薛工一句话）、地勘；小砚圈定五条编号冲突、天井尺度、A 案是否越 §18、B 案变更单是否连"玻璃盒子"一并裁。</div>
+
+<p><strong>案例对产品的意义（双向）</strong>：小砚项目为产品验证了五件制度资产＋一条引擎。反过来，产品化会逼这些制度变得更便宜、更快，回头降低小砚项目和以后住宿、书房区块的推进成本。两条线共用同一套引擎，互为试验田。</p>
+
+<h2>七、行动清单</h2>
+
+<p><strong>产品线</strong>：①<s>找一份真实报价单跑引擎，验证规则命中率</s> <span class=tag>已完成 0804</span>；②基准价库喂真实数据；③补 OCR 环节跑通零门槛输入。</p>
+
+<p><strong>小砚线</strong>：①消防咨询函；②等比例尺→用地结构图＋日照叠图；③断言脚本准入制。</p>
+
+<p><strong>共用</strong>：断言脚本一份代码两处用，先写谁都是为另一边铺路。</p>
+
+<footer>
+内部产品稿 · XY20260804v2 · fanny ＋ Claude<br>
+产品判断为探索性意见；小砚项目状态以在线工作台与修订记录为准。
+</footer>
+</div>
+</body></html>
